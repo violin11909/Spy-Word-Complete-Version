@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Screen</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="game.css">
+  <script src="game.js" defer></script>
+  <script src="lobby.js" defer></script>
+  <script src="/socket.io/socket.io.js"></script> <!-- Socket.io script -->
+</head>
+<body class="game-background-container">
+
+  <audio id="background-audio" autoplay loop>
+    <source src="profile/music1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="grid-container">
+    <div id="block1" class="profile-block"></div>
+    <div id="block2" class="profile-block"></div>
+    <div id="block3" class="profile-block"></div>
+    <div id="block4" class="profile-block"></div>
+    <div id="block5" class="profile-block"></div>
+    <div id="block6" class="profile-block"></div>
+  </div>
+  <button id="back-button" onclick="goBack()">Back</button>
+
+  <div id="roomchat" class="room-chat">
+    <!-- Chat messages will be dynamically added here -->
+  </div>
+  
+
+  <div class="player-list"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const clickSound = new Audio('profile/click.mp3');
+
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+        });
+      });
+    });
+  </script>
+
+
+</body>
+</html>
